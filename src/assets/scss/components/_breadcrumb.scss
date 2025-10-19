@@ -1,0 +1,17 @@
+//
+// breadcrumb.scss
+//
+@use "config/material/index" as vars;
+// Breadcrumb item arrow
+.breadcrumb-item {
+  > a {
+    color: var(--#{vars.$prefix}body-color);
+  }
+  + .breadcrumb-item {
+    &::before {
+      font-family: "Material Design Icons";
+      font-size: 15px;
+      line-height: 20px;
+    }
+  }
+}

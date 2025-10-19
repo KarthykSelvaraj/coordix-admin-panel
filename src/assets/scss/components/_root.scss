@@ -1,0 +1,358 @@
+@use "config/material/index" as vars;
+@use "config/material/index-custom" as vars_c;
+@use "config/material/index-dark" as vars_d;
+@use "config/material/bootstrap" as bs;
+
+@use "sass:color";
+@use "sass:map";
+:root {
+  // card
+  --#{vars.$prefix}card-logo-dark: block;
+  --#{vars.$prefix}card-logo-light: none;
+
+  //vertical menu
+  --#{vars.$prefix}vertical-menu-width: #{vars_c.$vertical-menu-width};
+  --#{vars.$prefix}vertical-menu-width-md: #{vars_c.$vertical-menu-width-md};
+  --#{vars.$prefix}vertical-menu-width-sm: #{vars_c.$vertical-menu-width-sm};
+
+  // Topbar - (Default Light)
+  --#{vars.$prefix}header-bg: #{vars_c.$header-bg};
+  --#{vars.$prefix}header-border: #{vars_c.$header-border};
+  --#{vars.$prefix}header-item-color: #{vars_c.$header-item-color};
+  --#{vars.$prefix}header-item-bg: #{vars_c.$header-item-bg};
+  --#{vars.$prefix}header-item-sub-color: #{vars_c.$header-item-sub-color};
+  --#{vars.$prefix}topbar-search-bg: #{vars_c.$topbar-search-bg};
+  --#{vars.$prefix}topbar-search-color: #{vars_c.$topbar-search-color};
+  --#{vars.$prefix}topbar-user-bg: #{vars_c.$topbar-user-bg};
+
+  //page title
+  --#{vars.$prefix}page-title-box-shadow: #{vars_c.$page-title-box-shadow};
+  --#{vars.$prefix}page-title-border: #{vars_c.$page-title-border};
+
+  // Topbar - Dark
+  &[data-topbar="dark"] {
+    --#{vars.$prefix}header-bg: #{vars_c.$dark-header-bg};
+    --#{vars.$prefix}header-item-color: #{vars_c.$dark-header-item-color};
+    --#{vars.$prefix}header-item-bg: #{vars_c.$dark-header-item-bg};
+    --#{vars.$prefix}header-item-sub-color: #{vars_c.$dark-header-item-sub-color};
+    --#{vars.$prefix}topbar-user-bg: #{vars_c.$dark-topbar-user-bg};
+    --#{vars.$prefix}topbar-search-bg: #{vars_c.$dark-topbar-search-bg};
+    --#{vars.$prefix}topbar-search-color: #{vars_c.$dark-topbar-search-color};
+    --#{vars.$prefix}header-border: #{vars_c.$dark-header-border};
+  }
+
+  // Horizontal nav
+  --#{vars.$prefix}topnav-bg: #{vars_c.$twocolumn-menu-iconview-bg};
+  --#{vars.$prefix}topnav-item-color: #{vars_c.$topnav-item-color};
+  --#{vars.$prefix}topnav-item-active-color: #{vars_c.$topnav-item-active-color};
+
+  // twocolumn menu
+  --#{vars.$prefix}twocolumn-menu-iconview-bg: #{vars_c.$twocolumn-menu-iconview-bg};
+  --#{vars.$prefix}twocolumn-menu-box-shadow: #{vars_c.$twocolumn-menu-box-shadow};
+
+  // boxed
+  --#{vars.$prefix}boxed-layout-width: #{vars_c.$boxed-layout-width};
+  --#{vars.$prefix}boxed-body-bg: #{vars_c.$boxed-body-bg};
+
+  //semibox layout
+  --#{vars.$prefix}semibox-width: #{vars_c.$semibox-width};
+
+  //footer
+  --#{vars.$prefix}footer-bg: #{vars_c.$footer-bg};
+  --#{vars.$prefix}footer-color: #{vars_c.$footer-color};
+
+  //form
+  --#{vars.$prefix}input-bg-custom: #{vars_c.$input-bg-custom};
+  --#{vars.$prefix}input-border-custom: #{vars_c.$input-border-custom};
+}
+
+//sidebar light theme
+@if vars.$sidebar-mode {
+  :root {
+    --#{vars.$prefix}vertical-menu-bg: #{vars_c.$vertical-menu-bg};
+    --#{vars.$prefix}vertical-menu-border: #{vars_c.$vertical-menu-border};
+    --#{vars.$prefix}vertical-menu-item-color: #{vars_c.$vertical-menu-item-color};
+    --#{vars.$prefix}vertical-menu-item-bg: #{vars_c.$vertical-menu-item-bg};
+    --#{vars.$prefix}vertical-menu-item-hover-color: #{vars_c.$vertical-menu-item-hover-color};
+    --#{vars.$prefix}vertical-menu-item-active-color: #{vars_c.$vertical-menu-item-active-color};
+    --#{vars.$prefix}vertical-menu-item-active-bg: #{vars_c.$vertical-menu-item-active-bg};
+    --#{vars.$prefix}vertical-menu-sub-item-color: #{vars_c.$vertical-menu-sub-item-color};
+    --#{vars.$prefix}vertical-menu-sub-item-hover-color: #{vars_c.$vertical-menu-sub-item-hover-color};
+    --#{vars.$prefix}vertical-menu-sub-item-active-color: #{vars_c.$vertical-menu-sub-item-active-color};
+    --#{vars.$prefix}vertical-menu-title-color: #{vars_c.$vertical-menu-title-color};
+    --#{vars.$prefix}vertical-menu-box-shadow: #{vars_c.$vertical-menu-box-shadow};
+    --#{vars.$prefix}vertical-menu-dropdown-box-shadow: #{vars_c.$vertical-menu-dropdown-box-shadow};
+
+    &[data-sidebar="dark"] {
+      //vertical dark
+      --#{vars.$prefix}vertical-menu-bg: #{vars_c.$dark-vertical-menu-bg};
+      --#{vars.$prefix}vertical-menu-border: #{vars_c.$dark-vertical-menu-border};
+      --#{vars.$prefix}vertical-menu-item-color: #{vars_c.$dark-vertical-menu-item-color};
+      --#{vars.$prefix}vertical-menu-item-bg: #{vars_c.$dark-vertical-menu-item-bg};
+      --#{vars.$prefix}vertical-menu-item-hover-color: #{vars_c.$dark-vertical-menu-item-hover-color};
+      --#{vars.$prefix}vertical-menu-item-active-color: #{vars_c.$dark-vertical-menu-item-active-color};
+      --#{vars.$prefix}vertical-menu-item-active-bg: #{vars_c.$dark-vertical-menu-item-active-bg};
+      --#{vars.$prefix}vertical-menu-sub-item-color: #{vars_c.$dark-vertical-menu-sub-item-color};
+      --#{vars.$prefix}vertical-menu-sub-item-hover-color: #{vars_c.$dark-vertical-menu-sub-item-hover-color};
+      --#{vars.$prefix}vertical-menu-sub-item-active-color: #{vars_c.$dark-vertical-menu-sub-item-active-color};
+      --#{vars.$prefix}vertical-menu-title-color: #{vars_c.$dark-vertical-menu-title-color};
+      --#{vars.$prefix}twocolumn-menu-iconview-bg: #{vars_c.$dark-twocolumn-menu-iconview-bg};
+      --#{vars.$prefix}vertical-menu-box-shadow: #{vars_c.$dark-vertical-menu-box-shadow};
+      --#{vars.$prefix}vertical-menu-dropdown-box-shadow: #{vars_c.$dark-vertical-menu-dropdown-box-shadow};
+    }
+  }
+}
+
+//sidebar gradient light theme
+@if vars.$sidebar-gradient-mode {
+  :root {
+    &:is(
+        [data-sidebar="gradient"],
+        [data-sidebar="gradient-2"],
+        [data-sidebar="gradient-3"],
+        [data-sidebar="gradient-4"]
+      ) {
+      --#{vars.$prefix}vertical-menu-item-color: #{vars_c.$vertical-menu-item-color-gradient};
+      --#{vars.$prefix}vertical-menu-item-bg: #{vars_c.$vertical-menu-item-bg-gradient};
+      --#{vars.$prefix}vertical-menu-item-hover-color: #{vars_c.$vertical-menu-item-hover-color-gradient};
+      --#{vars.$prefix}vertical-menu-item-active-color: #{vars_c.$vertical-menu-item-active-color-gradient};
+      --#{vars.$prefix}vertical-menu-item-active-bg: #{vars_c.$vertical-menu-item-active-bg-gradient};
+      --#{vars.$prefix}vertical-menu-sub-item-color: #{vars_c.$vertical-menu-sub-item-color-gradient};
+      --#{vars.$prefix}vertical-menu-sub-item-hover-color: #{vars_c.$vertical-menu-sub-item-hover-color-gradient};
+      --#{vars.$prefix}vertical-menu-sub-item-active-color: #{vars_c.$vertical-menu-sub-item-active-color-gradient};
+      --#{vars.$prefix}vertical-menu-title-color: #{vars_c.$vertical-menu-title-color-gradient};
+      --#{vars.$prefix}vertical-menu-box-shadow: #{vars_c.$vertical-menu-box-shadow-gradient};
+      --#{vars.$prefix}vertical-menu-dropdown-box-shadow: #{vars_c.$vertical-menu-dropdown-box-shadow-gradient};
+    }
+
+    &[data-sidebar="gradient"] {
+      --#{vars.$prefix}vertical-menu-bg: #{vars_c.$vertical-menu-bg-gradient};
+      --#{vars.$prefix}vertical-menu-border: #{vars_c.$vertical-menu-border-gradient};
+      --#{vars.$prefix}twocolumn-menu-iconview-bg: #{vars_c.$twocolumn-menu-iconview-bg-gradient};
+    }
+
+    &[data-sidebar="gradient-2"] {
+      --#{vars.$prefix}vertical-menu-bg: #{vars_c.$vertical-menu-bg-gradient-2};
+      --#{vars.$prefix}vertical-menu-border: #{vars_c.$vertical-menu-border-gradient-2};
+      --#{vars.$prefix}twocolumn-menu-iconview-bg: #{vars_c.$twocolumn-menu-iconview-bg-gradient-2};
+    }
+
+    &[data-sidebar="gradient-3"] {
+      --#{vars.$prefix}vertical-menu-bg: #{vars_c.$vertical-menu-bg-gradient-3};
+      --#{vars.$prefix}vertical-menu-border: #{vars_c.$vertical-menu-border-gradient-3};
+      --#{vars.$prefix}twocolumn-menu-iconview-bg: #{vars_c.$twocolumn-menu-iconview-bg-gradient-3};
+    }
+
+    &[data-sidebar="gradient-4"] {
+      --#{vars.$prefix}vertical-menu-bg: #{vars_c.$vertical-menu-bg-gradient-4};
+      --#{vars.$prefix}vertical-menu-border: #{vars_c.$vertical-menu-border-gradient-4};
+      --#{vars.$prefix}twocolumn-menu-iconview-bg: #{vars_c.$twocolumn-menu-iconview-bg-gradient-4};
+    }
+  }
+}
+
+//theme dark
+@if vars.$enable-dark-mode {
+  @include bs.color-mode(dark, true) {
+    --#{vars.$prefix}light-rgb: #{to-rgb(vars_d.$light-dark)};
+    --#{vars.$prefix}light: #{vars_d.$light-dark};
+    --#{vars.$prefix}light-text-emphasis: #{vars_d.$light-text-emphasis-dark};
+    --#{vars.$prefix}light-bg-subtle: #{vars_d.$light-bg-subtle-dark};
+    --#{vars.$prefix}light-border-subtle: #{vars_d.$light-border-subtle-dark};
+
+    --#{vars.$prefix}dark: #{vars_d.$dark-color};
+    --#{vars.$prefix}dark-rgb: #{to-rgb(vars_d.$dark-color)};
+    --#{vars.$prefix}dark-text-emphasis: #{vars_d.$dark-text-emphasis-dark};
+    --#{vars.$prefix}dark-bg-subtle: #{vars_d.$dark-bg-subtle-dark};
+    --#{vars.$prefix}dark-border-subtle: #{vars_d.$dark-border-subtle-dark};
+
+    // card
+    --#{vars.$prefix}card-logo-dark: none;
+    --#{vars.$prefix}card-logo-light: block;
+
+    //footer
+    --#{vars.$prefix}footer-bg: #{vars_d.$footer-bg-dark};
+    --#{vars.$prefix}footer-color: #{vars_d.$footer-color-dark};
+    --#{vars.$prefix}footer-border: #{vars_d.$footer-border-dark};
+
+    // Horizontal nav
+    --#{vars.$prefix}topnav-bg: #{vars_d.$topnav-bg-dark};
+    --#{vars.$prefix}topnav-item-color: #{vars_d.$topnav-item-color-dark};
+    --#{vars.$prefix}topnav-item-active-color: #{vars_d.$topnav-item-active-color-dark};
+    //page title
+    --#{vars.$prefix}page-title-box-shadow: #{vars_d.$page-title-box-shadow-dark};
+    --#{vars.$prefix}page-title-border: #{vars_d.$page-title-border-dark};
+
+    //two columns
+    --#{vars.$prefix}twocolumn-menu-box-shadow: #{vars_d.$twocolumn-menu-box-shadow-dark};
+
+    // boxed
+    --#{vars.$prefix}boxed-body-bg: #{vars_d.$boxed-body-bg-dark};
+
+    .table-light {
+      // Fixed: Use color.scale() with modern syntax
+      --#{vars.$prefix}table-color: #{color.scale(
+          vars_d.$light-dark,
+          $lightness: 100%
+        )};
+      --#{vars.$prefix}table-bg: var(--#{vars.$prefix}light);
+      --#{vars.$prefix}table-border-color: var(--#{vars.$prefix}border-color);
+      --#{vars.$prefix}table-striped-bg: var(--#{vars.$prefix}light);
+      // Fixed: Use correct variable reference (vars_d.$light-dark instead of $light-dark)
+      --#{vars.$prefix}table-striped-color: #{color.scale(
+          vars_d.$light-dark,
+          $lightness: 100%
+        )};
+      --#{vars.$prefix}table-active-bg: var(--#{vars.$prefix}light);
+      --#{vars.$prefix}table-active-color: #{color.scale(
+          vars_d.$light-dark,
+          $lightness: 100%
+        )};
+      --#{vars.$prefix}table-hover-bg: var(--#{vars.$prefix}light);
+      --#{vars.$prefix}table-hover-color: #{color.scale(
+          vars_d.$light-dark,
+          $lightness: 100%
+        )};
+    }
+
+    .btn-light,
+    .btn-outline-light {
+      // Fixed: Replace tint-color() with color.mix() and use proper variable reference
+      --#{vars.$prefix}btn-color: #{color.mix(white, vars.$body-bg-dark, 50%)};
+      --#{vars.$prefix}btn-active-color: #{vars.$white};
+      --#{vars.$prefix}btn-hover-color: #{vars.$white};
+    }
+
+    .btn-outline-dark,
+    .btn-soft-dark,
+    .btn-ghost-dark {
+      --#{vars.$prefix}btn-color: #{vars.$white};
+    }
+
+    .btn-ghost-dark {
+      --#{vars.$prefix}btn-active-color: #{vars.$white};
+      --#{vars.$prefix}btn-hover-color: #{vars.$white};
+    }
+
+    .dropdown-menu {
+      --#{vars.$prefix}dropdown-bg: #{vars_d.$dropdown-bg-dark};
+      --#{vars.$prefix}dropdown-link-color: #{vars_d.$dropdown-link-color-dark};
+      --#{vars.$prefix}dropdown-link-hover-color: #{vars_d.$dropdown-link-hover-color-dark};
+      --#{vars.$prefix}dropdown-link-hover-bg: #{vars_d.$dropdown-link-hover-bg-dark};
+      --#{vars.$prefix}dropdown-border-width: #{vars_d.$dropdown-border-width-dark};
+      --#{vars.$prefix}dropdown-link-active-color: #{vars_d.$dropdown-link-active-color-dark};
+      --#{vars.$prefix}dropdown-link-active-bg: #{vars_d.$dropdown-link-active-bg-dark};
+    }
+
+    //form
+    --#{vars.$prefix}input-bg-custom: #{vars_d.$input-bg-custom-dark};
+    --#{vars.$prefix}input-border-custom: #{vars_d.$input-border-custom-dark};
+  }
+}
+
+//topbar dark mode
+@if vars.$topbar-dark-mode {
+  @include bs.color-mode(dark, true) {
+    // Topbar
+    --#{vars.$prefix}header-bg: #{vars_d.$header-bg-dark};
+    --#{vars.$prefix}header-border: #{vars_d.$header-border-dark};
+    --#{vars.$prefix}header-item-color: #{vars_d.$header-item-color-dark};
+    --#{vars.$prefix}header-item-bg: #{vars_d.$header-item-bg-dark};
+    --#{vars.$prefix}header-item-sub-color: #{vars_d.$header-item-sub-color-dark};
+    --#{vars.$prefix}topbar-user-bg: #{vars_d.$topbar-user-bg-dark};
+    --#{vars.$prefix}topbar-search-bg: #{vars_d.$topbar-search-bg-dark};
+    --#{vars.$prefix}topbar-search-color: #{vars_d.$topbar-search-color-dark};
+
+    // Topbar - Dark
+    &[data-topbar="dark"] {
+      --#{vars.$prefix}header-bg: #{vars_d.$dark-header-bg-dark};
+      --#{vars.$prefix}header-border: #{vars_d.$dark-header-border-dark};
+      --#{vars.$prefix}header-item-color: #{vars_d.$dark-header-item-color-dark};
+      --#{vars.$prefix}header-item-bg: #{vars_d.$dark-header-item-bg-dark};
+      --#{vars.$prefix}header-item-sub-color: #{vars_d.$dark-header-item-sub-color-dark};
+      --#{vars.$prefix}topbar-user-bg: #{vars_d.$dark-topbar-user-bg-dark};
+      --#{vars.$prefix}topbar-search-bg: #{vars_d.$dark-topbar-search-bg-dark};
+      --#{vars.$prefix}topbar-search-color: #{vars_d.$dark-topbar-search-color-dark};
+    }
+  }
+}
+
+//sidebar dark mode
+@if vars.$sidebar-dark-mode {
+  @include bs.color-mode(dark, true) {
+    //sidebar light
+    --#{vars.$prefix}vertical-menu-bg: #{vars_d.$vertical-menu-bg-dark};
+    --#{vars.$prefix}vertical-menu-border: #{vars_d.$vertical-menu-border-dark};
+    --#{vars.$prefix}vertical-menu-item-color: #{vars_d.$vertical-menu-item-color-dark};
+    --#{vars.$prefix}vertical-menu-item-bg: #{vars_d.$vertical-menu-item-bg-dark};
+    --#{vars.$prefix}vertical-menu-item-hover-color: #{vars_d.$vertical-menu-item-hover-color-dark};
+    --#{vars.$prefix}vertical-menu-item-active-color: #{vars_d.$vertical-menu-item-active-color-dark};
+    --#{vars.$prefix}vertical-menu-item-active-bg: #{vars_d.$vertical-menu-item-active-bg-dark};
+    --#{vars.$prefix}vertical-menu-sub-item-color: #{vars_d.$vertical-menu-sub-item-color-dark};
+    --#{vars.$prefix}vertical-menu-sub-item-hover-color: #{vars_d.$vertical-menu-sub-item-hover-color-dark};
+    --#{vars.$prefix}vertical-menu-sub-item-active-color: #{vars_d.$vertical-menu-sub-item-active-color-dark};
+    --#{vars.$prefix}vertical-menu-title-color: #{vars_d.$vertical-menu-title-color-dark};
+
+    &[data-sidebar="dark"] {
+      //vertical dark
+      --#{vars.$prefix}vertical-menu-bg: #{vars_d.$dark-vertical-menu-bg-dark};
+      --#{vars.$prefix}vertical-menu-border: #{vars_d.$dark-vertical-menu-border-dark};
+      --#{vars.$prefix}vertical-menu-item-color: #{vars_d.$dark-vertical-menu-item-color-dark};
+      --#{vars.$prefix}vertical-menu-item-bg: #{vars_d.$dark-vertical-menu-item-bg-dark};
+      --#{vars.$prefix}vertical-menu-item-hover-color: #{vars_d.$dark-vertical-menu-item-hover-color-dark};
+      --#{vars.$prefix}vertical-menu-item-active-color: #{vars_d.$dark-vertical-menu-item-active-color-dark};
+      --#{vars.$prefix}vertical-menu-item-active-bg: #{vars_d.$dark-vertical-menu-item-active-bg-dark};
+      --#{vars.$prefix}vertical-menu-sub-item-color: #{vars_d.$dark-vertical-menu-sub-item-color-dark};
+      --#{vars.$prefix}vertical-menu-sub-item-hover-color: #{vars_d.$dark-vertical-menu-sub-item-hover-color-dark};
+      --#{vars.$prefix}vertical-menu-sub-item-active-color: #{vars_d.$dark-vertical-menu-sub-item-active-color-dark};
+      --#{vars.$prefix}vertical-menu-title-color: #{vars_d.$dark-vertical-menu-title-color-dark};
+      --#{vars.$prefix}twocolumn-menu-iconview-bg: #{vars_d.$dark-twocolumn-menu-iconview-bg-dark};
+    }
+  }
+}
+
+//sidebar gradient dark mode
+@if vars.$sidebar-gradient-dark-mode {
+  @include bs.color-mode(dark, true) {
+    &:is(
+        [data-sidebar="gradient"],
+        [data-sidebar="gradient-2"],
+        [data-sidebar="gradient-3"],
+        [data-sidebar="gradient-4"]
+      ) {
+      --#{vars.$prefix}vertical-menu-item-color: #{vars_c.$vertical-menu-item-color-gradient-dark};
+      --#{vars.$prefix}vertical-menu-item-bg: #{vars_c.$vertical-menu-item-bg-gradient-dark};
+      --#{vars.$prefix}vertical-menu-item-hover-color: #{vars_c.$vertical-menu-item-hover-color-gradient-dark};
+      --#{vars.$prefix}vertical-menu-item-active-color: #{vars_c.$vertical-menu-item-active-color-gradient-dark};
+      --#{vars.$prefix}vertical-menu-item-active-bg: #{vars_c.$vertical-menu-item-active-bg-gradient-dark};
+      --#{vars.$prefix}vertical-menu-sub-item-color: #{vars_c.$vertical-menu-sub-item-color-gradient-dark};
+      --#{vars.$prefix}vertical-menu-sub-item-hover-color: #{vars_c.$vertical-menu-sub-item-hover-color-gradient-dark};
+      --#{vars.$prefix}vertical-menu-sub-item-active-color: #{vars_c.$vertical-menu-sub-item-active-color-gradient-dark};
+      --#{vars.$prefix}vertical-menu-title-color: #{vars_c.$vertical-menu-title-color-gradient-dark};
+    }
+
+    &[data-sidebar="gradient"] {
+      --#{vars.$prefix}vertical-menu-bg: #{vars_c.$vertical-menu-bg-gradient-dark};
+      --#{vars.$prefix}vertical-menu-border: #{vars_c.$vertical-menu-border-gradient-dark};
+      --#{vars.$prefix}twocolumn-menu-iconview-bg: #{vars_c.$twocolumn-menu-iconview-bg-gradient-dark};
+    }
+
+    &[data-sidebar="gradient-2"] {
+      --#{vars.$prefix}vertical-menu-bg: #{vars_c.$vertical-menu-bg-gradient-2-dark};
+      --#{vars.$prefix}vertical-menu-border: #{vars_c.$vertical-menu-border-gradient-2-dark};
+      --#{vars.$prefix}twocolumn-menu-iconview-bg: #{vars_c.$twocolumn-menu-iconview-bg-gradient-2-dark};
+    }
+
+    &[data-sidebar="gradient-3"] {
+      --#{vars.$prefix}vertical-menu-bg: #{vars_c.$vertical-menu-bg-gradient-3-dark};
+      --#{vars.$prefix}vertical-menu-border: #{vars_c.$vertical-menu-border-gradient-3-dark};
+      --#{vars.$prefix}twocolumn-menu-iconview-bg: #{vars_c.$twocolumn-menu-iconview-bg-gradient-3-dark};
+    }
+
+    &[data-sidebar="gradient-4"] {
+      --#{vars.$prefix}vertical-menu-bg: #{vars_c.$vertical-menu-bg-gradient-4-dark};
+      --#{vars.$prefix}vertical-menu-border: #{vars_c.$vertical-menu-border-gradient-4-dark};
+      --#{vars.$prefix}twocolumn-menu-iconview-bg: #{vars_c.$twocolumn-menu-iconview-bg-gradient-4-dark};
+    }
+  }
+}

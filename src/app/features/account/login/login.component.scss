@@ -1,0 +1,5 @@
+@use "config/material/index" as vars;
+
+body {
+  background-color: vars.$body-bg !important;
+}

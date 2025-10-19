@@ -1,0 +1,8 @@
+//
+// _popover.scss
+//
+@use "config/material/index" as vars;
+
+.popover {
+  box-shadow: vars.$popover-box-shadow;
+}

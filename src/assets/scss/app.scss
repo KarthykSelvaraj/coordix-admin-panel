@@ -1,0 +1,140 @@
+// ================================
+// 🔤 Fonts
+// ================================
+
+@use "./fonts/fonts";
+
+// ================================
+// 🎯 Core Bootstrap & Variables
+// ================================
+
+@use "config/material/bootstrap" as *;
+@use "components/utilities";
+
+// ================================
+// 📐 Structure/Layout
+// ================================
+@use "structure/footer";
+@use "structure/horizontal";
+@use "structure/layouts";
+@use "structure/page-head";
+@use "structure/topbar";
+@use "structure/two-column";
+@use "structure/vertical";
+
+// ================================
+// 🧩 Components
+// ================================
+@use "components/accordion";
+@use "components/avatar";
+@use "components/demos";
+@use "components/forms";
+@use "components/helper";
+@use "components/preloader";
+@use "components/print";
+@use "components/ribbons";
+@use "components/scrollspy";
+@use "components/toast";
+@use "components/waves";
+@use "components/widgets";
+
+// ================================
+// 🧱 Bootstrap Components (Rewritten)
+// ================================
+@use "components/alerts";
+@use "components/badge";
+@use "components/breadcrumb";
+@use "components/buttons";
+@use "components/card";
+@use "components/dropdown";
+@use "components/form-check";
+@use "components/form-control";
+@use "components/list-group";
+@use "components/modal";
+@use "components/nav";
+@use "components/pagination";
+@use "components/popover";
+@use "components/progress";
+@use "components/reboot";
+@use "components/root";
+@use "components/table";
+@use "components/type";
+
+// ================================
+// 🔌 Plugin SCSS
+// ================================
+@use "plugins/apexcharts";
+@use "plugins/autocomplete";
+@use "plugins/chartjs";
+@use "plugins/choices";
+@use "plugins/ckeditor";
+@use "plugins/colorpicker";
+@use "plugins/custom-scrollbar";
+@use "plugins/datatables";
+@use "plugins/dropzone";
+@use "plugins/echarts";
+@use "plugins/emoji-picker";
+@use "plugins/filepond";
+@use "plugins/flag-input";
+@use "plugins/flatpicker";
+@use "plugins/form-input-spin";
+@use "plugins/form-wizard";
+@use "plugins/fullcalendar";
+@use "plugins/google-map";
+@use "plugins/gridjs";
+@use "plugins/leaflet-maps";
+@use "plugins/listjs";
+@use "plugins/multijs";
+@use "plugins/prismjs";
+@use "plugins/quilljs";
+@use "plugins/range-slider";
+@use "plugins/select2";
+@use "plugins/sortablejs";
+@use "plugins/sweetalert2";
+@use "plugins/swiper";
+@use "plugins/toastify";
+@use "plugins/tour";
+@use "plugins/vector-maps";
+
+// ================================
+// 📄 Pages
+// ================================
+@use "pages/authentication";
+@use "pages/blog";
+@use "pages/chat";
+@use "pages/coming-soon";
+@use "pages/dashboard";
+@use "pages/email";
+@use "pages/errors";
+@use "pages/ecommerce";
+@use "pages/file-manager";
+@use "pages/gallery";
+@use "pages/invoice";
+@use "pages/job-landing";
+@use "pages/jobs";
+@use "pages/kanban";
+@use "pages/landing";
+@use "pages/nft-landing";
+@use "pages/profile";
+@use "pages/search-results";
+@use "pages/sitemap";
+@use "pages/team";
+@use "pages/timeline";
+@use "pages/to-do";
+
+// ================================
+// 🛠 Angular + Custom Overrides
+// ================================
+@use "config/material/angular-custom";
+@use "config/material/custom";
+@use "icons";
+
+// ================================
+// 🚩 RTL Support (Commented Out)
+// ================================
+// @use "rtl/components-rtl";
+// @use "rtl/layouts-rtl";
+// @use "rtl/pages-rtl";
+// @use "rtl/plugins-rtl";
+
+// all other custom SCSS files follow here...

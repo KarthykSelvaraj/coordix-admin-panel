@@ -1,0 +1,1234 @@
+@use "sass:color";
+@use "sass:map";
+@use "sass:string";
+@use "config/material/variables" as *;
+@use "config/material/variables-custom" as *;
+@use "config/material/variables-dark" as *;
+
+// 2. Merge custom utilities with Bootstrap's default
+$utilities: map.merge(
+  (
+    // Custom utilities
+    "font-size-custom":
+      (
+        property: font-size,
+        class: fs,
+        values: $font-size-custom,
+      ),
+    "cursor": (
+      property: cursor,
+      class: cursor,
+      responsive: true,
+      values: auto pointer grab,
+    )
+  ),
+  ()
+);
+
+@forward "bootstrap/scss/bootstrap" with (
+  $utilities: $utilities,
+  $body-bg-dark: $body-bg-dark,
+  //variable
+  $variable-prefix: $variable-prefix,
+  $prefix: $variable-prefix,
+  //colors
+  $white: $white,
+  $black: $black,
+  $blue: $blue,
+  $cyan: $cyan,
+  $green: $green,
+  $indigo: $indigo,
+  $purple: $purple,
+  $pink: $pink,
+  $red: $red,
+  $orange: $orange,
+  $yellow: $yellow,
+  $teal: $teal,
+  $colors: $colors,
+  //contrast
+  $min-contrast-ratio: $min-contrast-ratio,
+  $color-contrast-dark: $color-contrast-dark,
+  $color-contrast-light: $color-contrast-light,
+  //shades
+  $gray-100: $gray-100,
+  $gray-200: $gray-200,
+  $gray-300: $gray-300,
+  $gray-400: $gray-400,
+  $gray-500: $gray-500,
+  $gray-600: $gray-600,
+  $gray-700: $gray-700,
+  $gray-800: $gray-800,
+  $gray-900: $gray-900,
+  $grays: $grays,
+  $cyan-100: $cyan-100,
+  $cyan-200: $cyan-200,
+  $cyan-300: $cyan-300,
+  $cyan-400: $cyan-400,
+  $cyan-500: $cyan-500,
+  $cyan-600: $cyan-600,
+  $cyan-700: $cyan-700,
+  $cyan-800: $cyan-800,
+  $cyan-900: $cyan-900,
+  $cyans: $cyans,
+  $blue-100: $blue-100,
+  $blue-200: $blue-200,
+  $blue-300: $blue-300,
+  $blue-400: $blue-400,
+  $blue-500: $blue-500,
+  $blue-600: $blue-600,
+  $blue-700: $blue-700,
+  $blue-800: $blue-800,
+  $blue-900: $blue-900,
+  $blues: $blues,
+  $purple-100: $purple-100,
+  $purple-200: $purple-200,
+  $purple-300: $purple-300,
+  $purple-400: $purple-400,
+  $purple-500: $purple-500,
+  $purple-600: $purple-600,
+  $purple-700: $purple-700,
+  $purple-800: $purple-800,
+  $purple-900: $purple-900,
+  $purples: $purples,
+  $pink-100: $pink-100,
+  $pink-200: $pink-200,
+  $pink-300: $pink-300,
+  $pink-400: $pink-400,
+  $pink-500: $pink-500,
+  $pink-600: $pink-600,
+  $pink-700: $pink-700,
+  $pink-800: $pink-800,
+  $pink-900: $pink-900,
+  $pinks: $pinks,
+  $red-100: $red-100,
+  $red-200: $red-200,
+  $red-300: $red-300,
+  $red-400: $red-400,
+  $red-500: $red-500,
+  $red-600: $red-600,
+  $red-700: $red-700,
+  $red-800: $red-800,
+  $red-900: $red-900,
+  $reds: $reds,
+  $orange-100: $orange-100,
+  $orange-200: $orange-200,
+  $orange-300: $orange-300,
+  $orange-400: $orange-400,
+  $orange-500: $orange-500,
+  $orange-600: $orange-600,
+  $orange-700: $orange-700,
+  $orange-800: $orange-800,
+  $orange-900: $orange-900,
+  $oranges: $oranges,
+  $yellow-100: $yellow-100,
+  $yellow-200: $yellow-200,
+  $yellow-300: $yellow-300,
+  $yellow-400: $yellow-400,
+  $yellow-500: $yellow-500,
+  $yellow-600: $yellow-600,
+  $yellow-700: $yellow-700,
+  $yellow-800: $yellow-800,
+  $yellow-900: $yellow-900,
+  $yellows: $yellows,
+  $green-100: $green-100,
+  $green-200: $green-200,
+  $green-300: $green-300,
+  $green-400: $green-400,
+  $green-500: $green-500,
+  $green-600: $green-600,
+  $green-700: $green-700,
+  $green-800: $green-800,
+  $green-900: $green-900,
+  $greens: $greens,
+  $teal-100: $teal-100,
+  $teal-200: $teal-200,
+  $teal-300: $teal-300,
+  $teal-400: $teal-400,
+  $teal-500: $teal-500,
+  $teal-600: $teal-600,
+  $teal-700: $teal-700,
+  $teal-800: $teal-800,
+  $teal-900: $teal-900,
+  $teals: $teals,
+  $indigo-100: $indigo-100,
+  $indigo-200: $indigo-200,
+  $indigo-300: $indigo-300,
+  $indigo-400: $indigo-400,
+  $indigo-500: $indigo-500,
+  $indigo-600: $indigo-600,
+  $indigo-700: $indigo-700,
+  $indigo-800: $indigo-800,
+  $indigo-900: $indigo-900,
+  $indigos: $indigos,
+  // scss-docs-start theme-color-variables
+  $primary: $blue,
+  $secondary: $cyan,
+  $success: $green,
+  $info: $indigo,
+  $warning: $yellow,
+  $danger: $red,
+  $light: $gray-100,
+  $dark: $black,
+  // scss-docs-end theme-color-variables
+  // scss-docs-start theme-colors-map
+  $theme-colors: $theme-colors,
+  // scss-docs-end theme-colors-map
+  // scss-docs-start theme-text-variables
+  $primary-text-emphasis: $primary-text-emphasis,
+  $secondary-text-emphasis: $secondary-text-emphasis,
+  $success-text-emphasis: $success-text-emphasis,
+  $info-text-emphasis: $info-text-emphasis,
+  $warning-text-emphasis: $warning-text-emphasis,
+  $danger-text-emphasis: $danger-text-emphasis,
+  $light-text-emphasis: $light-text-emphasis,
+  $dark-text-emphasis: $dark-text-emphasis,
+  // scss-docs-end theme-text-variables
+  // scss-docs-start theme-bg-subtle-variables
+  $primary-bg-subtle: $primary-bg-subtle,
+  $secondary-bg-subtle: $secondary-bg-subtle,
+  $success-bg-subtle: $success-bg-subtle,
+  $info-bg-subtle: $info-bg-subtle,
+  $warning-bg-subtle: $warning-bg-subtle,
+  $danger-bg-subtle: $danger-bg-subtle,
+  $light-bg-subtle: $light-bg-subtle,
+  $dark-bg-subtle: $dark-bg-subtle,
+  // scss-docs-end theme-bg-subtle-variables
+  // scss-docs-start theme-border-subtle-variables
+  $primary-border-subtle: $primary-border-subtle,
+  $secondary-border-subtle: $secondary-border-subtle,
+  $success-border-subtle: $success-border-subtle,
+  $info-border-subtle: $info-border-subtle,
+  $warning-border-subtle: $warning-border-subtle,
+  $danger-border-subtle: $danger-border-subtle,
+  $light-border-subtle: $light-border-subtle,
+  $dark-border-subtle: $dark-border-subtle,
+  // scss-docs-end theme-border-subtle-variables
+  // Body
+  //
+  // Settings for the `<body>` element.
+  $body-bg: $body-bg,
+  $body-color: $body-color,
+  $body-text-align: left,
+  $body-secondary-color: $body-secondary-color,
+  $body-secondary-bg: $body-secondary-bg,
+  $body-tertiary-color: $body-tertiary-color,
+  $body-tertiary-bg: $body-tertiary-bg,
+  $body-emphasis-color: $body-emphasis-color,
+  // Body,
+  // Paragraphs
+  //
+  // Style p element.
+  $paragraph-margin-bottom: $paragraph-margin-bottom,
+  // Paragraphs
+  // Links
+  //
+  // Style anchor elements.
+  $link-color: $link-color,
+  $link-decoration: $link-decoration,
+  $link-shade-percentage: $link-shade-percentage,
+  $link-hover-color: $link-hover-color,
+  $link-hover-decoration: $link-hover-decoration,
+  $stretched-link-pseudo-element: $stretched-link-pseudo-element,
+  $stretched-link-z-index: $stretched-link-z-index,
+  // Links
+  // Icon links
+  // scss-docs-start icon-link-variables
+  $icon-link-gap: $icon-link-gap,
+  $icon-link-underline-offset: $icon-link-underline-offset,
+  $icon-link-icon-size: $icon-link-icon-size,
+  $icon-link-icon-transition: $icon-link-icon-transition,
+  $icon-link-icon-transform: $icon-link-icon-transform,
+  // scss-docs-end icon-link-variables
+  // scss-docs-start grid-breakpoints
+  $grid-breakpoints: $grid-breakpoints,
+  // scss-docs-end grid-breakpoints
+  // scss-docs-start container-max-widths
+  $container-max-widths: $container-max-widths,
+  // scss-docs-end container-max-widths
+  // Grid columns
+  //
+  // Set the number of columns and specify the width of the gutters.
+  $grid-columns: $grid-columns,
+  $grid-gutter-width: $grid-gutter-width,
+  $grid-row-columns: $grid-row-columns,
+  // Container padding
+  $container-padding-x: $container-padding-x,
+  // Container padding
+  // scss-docs-start border-variables
+  $border-width: $border-width,
+  $border-widths: $border-widths,
+  $border-style: $border-style,
+  $border-color: $border-color,
+  $border-color-translucent: $border-color-translucent,
+  // scss-docs-end border-variables
+  // scss-docs-start border-radius-variables
+  $border-radius: $border-radius,
+  $border-radius-sm: $border-radius-sm,
+  $border-radius-lg: $border-radius-lg,
+  $border-radius-xl: $border-radius-xl,
+  $border-radius-xxl: $border-radius-xxl,
+  $border-radius-2xl: $border-radius-xxl,
+  $border-radius-pill: $border-radius-pill,
+  // scss-docs-end border-radius-variables
+  // scss-docs-start box-shadow-variables
+  $box-shadow: $box-shadow,
+  $box-shadow-sm: $box-shadow-sm,
+  $box-shadow-lg: $box-shadow-lg,
+  $box-shadow-inset: $box-shadow-inset,
+  // scss-docs-end box-shadow-variables
+  //component active color setup
+  $component-active-color: $component-active-color,
+  $component-active-bg: $component-active-bg,
+  //component active color setup
+  // scss-docs-start focus-ring-variables
+  $focus-ring-width: $focus-ring-width,
+  $focus-ring-opacity: $focus-ring-opacity,
+  $focus-ring-color: $focus-ring-color,
+  $focus-ring-blur: $focus-ring-blur,
+  $focus-ring-box-shadow: $focus-ring-box-shadow,
+  // scss-docs-end focus-ring-variables
+  // scss-docs-start caret-variables
+  $caret-width: $caret-width,
+  $caret-vertical-align: $caret-vertical-align,
+  $caret-spacing: $caret-spacing,
+  // scss-docs-end caret-variables
+  $transition-base: $transition-base,
+  $transition-fade: $transition-fade,
+  // scss-docs-start collapse-transition
+  $transition-collapse: $transition-collapse,
+  $transition-collapse-width: $transition-collapse-width,
+  // scss-docs-end collapse-transition
+  // scss-docs-start aspect-ratios
+  $aspect-ratios: $aspect-ratios,
+  // scss-docs-end aspect-ratios
+  //font
+  $font-family-sans-serif: $font-family-primary,
+  $font-family-base: $font-family-primary,
+  $font-size-root: $font-size-root,
+  $font-size-base: $font-size-base,
+  $font-size-sm: $font-size-sm,
+  $font-size-lg: $font-size-lg,
+  $font-weight-lighter: $font-weight-lighter,
+  $font-weight-light: $font-weight-light,
+  $font-weight-normal: $font-weight-normal,
+  $font-weight-medium: $font-weight-medium,
+  $font-weight-semibold: $font-weight-semibold,
+  $font-weight-bold: $font-weight-bold,
+  $font-weight-bolder: $font-weight-bolder,
+  $font-weight-base: $font-weight-base,
+  $dt-font-weight: $font-weight-semibold,
+  $line-height-base: $line-height-base,
+  $line-height-sm: $line-height-sm,
+  $line-height-lg: $line-height-lg,
+  //headers
+  $h1-font-size: $h1-font-size,
+  $h2-font-size: $h2-font-size,
+  $h3-font-size: $h3-font-size,
+  $h4-font-size: $h4-font-size,
+  $h5-font-size: $h5-font-size,
+  $h6-font-size: $h6-font-size,
+  //placeholders
+  $lead-font-size: $lead-font-size,
+  $lead-font-weight: $lead-font-weight,
+  //small
+  $small-font-size: $small-font-size,
+  //sup
+  $sub-sup-font-size: $sub-sup-font-size,
+  //.initialism
+  //.initialism
+  $initialism-font-size: $initialism-font-size,
+  //block quote
+  $blockquote-margin-y: $blockquote-margin-y,
+  $blockquote-font-size: $blockquote-font-size,
+  $blockquote-footer-color: $blockquote-footer-color,
+  $blockquote-footer-font-size: $blockquote-footer-font-size,
+  // scss-docs-end font-variables
+  // scss-docs-start font-sizes
+  $font-sizes: $font-sizes,
+  // scss-docs-end font-sizes
+  // scss-docs-start headings-variables
+  $headings-margin-bottom: $headings-margin-bottom,
+  $headings-font-family: $headings-font-family,
+  $headings-font-style: $headings-font-style,
+  $headings-font-weight: $headings-font-weight,
+  $headings-line-height: $headings-line-height,
+  $headings-color: $headings-color,
+  // scss-docs-end headings-variables
+  // scss-docs-start display-headings
+  $display-font-sizes: $display-font-sizes,
+  $display-font-family: $display-font-family,
+  $display-font-style: $display-font-style,
+  $display-font-weight: $display-font-weight,
+  $display-line-height: $display-line-height,
+  // scss-docs-end display-headings
+  $text-muted: $text-muted,
+  //hr
+  $hr-margin-y: $hr-margin-y,
+  $hr-color: $hr-color,
+  $hr-bg-color: $hr-bg-color,
+  $hr-height: $hr-height,
+  $hr-border-color: $hr-border-color,
+  $hr-border-width: $hr-border-width,
+  $hr-opacity: $hr-opacity,
+  //hr
+  //legend
+  $legend-margin-bottom: $legend-margin-bottom,
+  $legend-font-size: $legend-font-size,
+  $legend-font-weight: $legend-font-weight,
+  //legend
+  //list
+  $list-inline-padding: $list-inline-padding,
+  //list
+  //mark
+  $mark-padding: $mark-padding,
+  $mark-bg: $mark-bg,
+  //table
+  $table-cell-padding-y: $table-cell-padding-y,
+  $table-cell-padding-x: $table-cell-padding-x,
+  $table-cell-padding-y-sm: $table-cell-padding-y-sm,
+  $table-cell-padding-x-sm: $table-cell-padding-x-sm,
+  $table-cell-vertical-align: $table-cell-vertical-align,
+  $table-color: $table-color,
+  $table-bg: $table-bg,
+  $table-accent-bg: $table-accent-bg,
+  $table-th-font-weight: $table-th-font-weight,
+  $table-striped-color: $table-striped-color,
+  $table-striped-bg-factor: $table-striped-bg-factor,
+  $table-striped-bg: $table-striped-bg,
+  $table-active-color: $table-active-color,
+  $table-active-bg-factor: $table-active-bg-factor,
+  $table-active-bg: $table-active-bg,
+  $table-hover-color: $table-hover-color,
+  $table-hover-bg-factor: $table-hover-bg-factor,
+  $table-hover-bg: $table-hover-bg,
+  $table-border-factor: $table-border-factor,
+  $table-border-width: $table-border-width,
+  $table-border-color: $table-border-color,
+  $table-striped-order: $table-striped-order,
+  $table-striped-columns-order: $table-striped-columns-order,
+  $table-group-separator-color: $table-group-separator-color,
+  $table-caption-color: $table-caption-color,
+  $table-bg-scale: $table-bg-scale,
+  $table-variants: $table-variants,
+  //table
+  //input
+  $input-btn-padding-y: $input-btn-padding-y,
+  $input-btn-padding-x: $input-btn-padding-x,
+  $input-btn-font-family: $input-btn-font-family,
+  $input-btn-font-size: $input-btn-font-size,
+  $input-btn-line-height: $input-btn-line-height,
+  $input-btn-focus-width: $input-btn-focus-width,
+  $input-btn-focus-color-opacity: $input-btn-focus-color-opacity,
+  $input-btn-focus-color: $input-btn-focus-color,
+  $input-btn-focus-blur: $input-btn-focus-blur,
+  $input-btn-focus-box-shadow: $input-btn-focus-box-shadow,
+  $input-btn-padding-y-sm: $input-btn-padding-y-sm,
+  $input-btn-padding-x-sm: $input-btn-padding-x-sm,
+  $input-btn-font-size-sm: $input-btn-font-size-sm,
+  $input-btn-padding-y-lg: $input-btn-padding-y-lg,
+  $input-btn-padding-x-lg: $input-btn-padding-x-lg,
+  $input-btn-font-size-lg: $input-btn-font-size-lg,
+  $input-btn-border-width: $input-btn-border-width,
+  //input
+  // scss-docs-start btn-variables
+  $btn-color: $btn-color,
+  $btn-padding-y: $btn-padding-y,
+  $btn-padding-x: $btn-padding-x,
+  $btn-font-family: $btn-font-family,
+  $btn-font-size: $btn-font-size,
+  $btn-line-height: $btn-line-height,
+  $btn-white-space: $btn-white-space,
+
+  $btn-padding-y-sm: $btn-padding-y-sm,
+  $btn-padding-x-sm: $btn-padding-x-sm,
+  $btn-font-size-sm: $btn-font-size-sm,
+
+  $btn-padding-y-lg: $btn-padding-y-lg,
+  $btn-padding-x-lg: $btn-padding-x-lg,
+  $btn-font-size-lg: $btn-font-size-lg,
+
+  $btn-border-width: $btn-border-width,
+  $btn-font-weight: $btn-font-weight,
+  $btn-box-shadow: $btn-box-shadow,
+  $btn-focus-width: $btn-focus-width,
+  $btn-focus-box-shadow: $btn-focus-box-shadow,
+  $btn-disabled-opacity: $btn-disabled-opacity,
+  $btn-active-box-shadow: $btn-active-box-shadow,
+
+  $btn-link-color: $btn-link-color,
+  $btn-link-hover-color: $btn-link-hover-color,
+  $btn-link-disabled-color: $btn-link-disabled-color,
+  $btn-link-focus-shadow-rgb: $btn-link-focus-shadow-rgb,
+
+  $btn-border-radius: $btn-border-radius,
+  $btn-border-radius-sm: $btn-border-radius-sm,
+  $btn-border-radius-lg: $btn-border-radius-lg,
+
+  $btn-transition: $btn-transition,
+
+  $btn-hover-bg-shade-amount: $btn-hover-bg-shade-amount,
+  $btn-hover-bg-tint-amount: $btn-hover-bg-tint-amount,
+  $btn-hover-border-shade-amount: $btn-hover-border-shade-amount,
+  $btn-hover-border-tint-amount: $btn-hover-border-tint-amount,
+  $btn-active-bg-shade-amount: $btn-active-bg-shade-amount,
+  $btn-active-bg-tint-amount: $btn-active-bg-tint-amount,
+  $btn-active-border-shade-amount: $btn-active-border-shade-amount,
+  $btn-active-border-tint-amount: $btn-active-border-tint-amount,
+  // scss-docs-end btn-variables
+  //forms
+  // scss-docs-start form-text-variables
+  $form-text-margin-top: $form-text-margin-top,
+  $form-text-font-size: $form-text-font-size,
+  $form-text-font-style: $form-text-font-style,
+  $form-text-font-weight: $form-text-font-weight,
+  $form-text-color: $form-text-color,
+  // scss-docs-end form-text-variables
+  // scss-docs-start form-label-variables
+  $form-label-margin-bottom: $form-label-margin-bottom,
+  $form-label-font-size: $form-label-font-size,
+  $form-label-font-style: $form-label-font-style,
+  $form-label-font-weight: $form-label-font-weight,
+  $form-label-color: $form-label-color,
+  // scss-docs-end form-label-variables
+  //forms
+  //input
+  $input-padding-y: $input-padding-y,
+  $input-padding-x: $input-padding-x,
+  $input-font-family: $input-font-family,
+  $input-font-size: $input-font-size,
+  $input-font-weight: $input-font-weight,
+  $input-line-height: $input-line-height,
+
+  $input-padding-y-sm: $input-padding-y-sm,
+  $input-padding-x-sm: $input-padding-x-sm,
+  $input-font-size-sm: $input-font-size-sm,
+
+  $input-padding-y-lg: $input-padding-y-lg,
+  $input-padding-x-lg: $input-padding-x-lg,
+  $input-font-size-lg: $input-font-size-lg,
+
+  $input-bg: $input-bg,
+  $input-disabled-color: $input-disabled-color,
+  $input-disabled-bg: $input-disabled-bg,
+  $input-disabled-border-color: $input-disabled-border-color,
+
+  $input-color: $input-color,
+  $input-border-color: $input-border-color,
+  $input-border-width: $input-border-width,
+  $input-box-shadow: $input-box-shadow,
+
+  $input-border-radius: $input-border-radius,
+  $input-border-radius-sm: $input-border-radius-sm,
+  $input-border-radius-lg: $input-border-radius-lg,
+
+  $input-focus-bg: $input-focus-bg,
+  $input-focus-border-color: $input-focus-border-color,
+  $input-focus-color: $input-focus-color,
+  $input-focus-width: $input-focus-width,
+  $input-focus-box-shadow: $input-focus-box-shadow,
+
+  $input-placeholder-color: $input-placeholder-color,
+  $input-plaintext-color: $input-plaintext-color,
+
+  $input-height-border: $input-height-border,
+  $input-height-inner: $input-height-inner,
+  $input-height-inner-half: $input-height-inner-half,
+  $input-height-inner-quarter: $input-height-inner-quarter,
+
+  $input-height: $input-height,
+  $input-height-sm: $input-height-sm,
+  $input-height-lg: $input-height-lg,
+
+  $input-transition: $input-transition,
+  //input
+  // scss-docs-start input-group-variables
+  $input-group-addon-padding-y: $input-group-addon-padding-y,
+  $input-group-addon-padding-x: $input-group-addon-padding-x,
+  $input-group-addon-font-weight: $input-group-addon-font-weight,
+  $input-group-addon-color: $input-group-addon-color,
+  $input-group-addon-bg: $input-group-addon-bg,
+  $input-group-addon-border-color: $input-group-addon-border-color,
+  // scss-docs-end input-group-variables
+  //form
+  $form-color-width: $form-color-width,
+
+  // Form check variables
+  $form-check-input-width: $form-check-input-width,
+  $form-check-min-height: $form-check-min-height,
+  $form-check-padding-start: $form-check-padding-start,
+  $form-check-margin-bottom: $form-check-margin-bottom,
+  $form-check-label-color: $form-check-label-color,
+  $form-check-label-cursor: $form-check-label-cursor,
+  $form-check-transition: $form-check-transition,
+  $form-check-input-active-filter: $form-check-input-active-filter,
+  $form-check-input-bg: $form-check-input-bg,
+  $form-check-input-border: $form-check-input-border,
+  $form-check-input-border-radius: $form-check-input-border-radius,
+  $form-check-radio-border-radius: $form-check-radio-border-radius,
+  $form-check-input-focus-border: $form-check-input-focus-border,
+  $form-check-input-focus-box-shadow: $form-check-input-focus-box-shadow,
+  $form-check-input-checked-color: $form-check-input-checked-color,
+  $form-check-input-checked-bg-color: $form-check-input-checked-bg-color,
+  $form-check-input-checked-border-color: $form-check-input-checked-border-color,
+  $form-check-input-checked-bg-image: $form-check-input-checked-bg-image,
+  $form-check-radio-checked-bg-image: $form-check-radio-checked-bg-image,
+  $form-check-input-indeterminate-color: $form-check-input-indeterminate-color,
+  $form-check-input-indeterminate-bg-color:
+    $form-check-input-indeterminate-bg-color,
+  $form-check-input-indeterminate-border-color:
+    $form-check-input-indeterminate-border-color,
+  $form-check-input-indeterminate-bg-image:
+    $form-check-input-indeterminate-bg-image,
+  $form-check-input-disabled-opacity: $form-check-input-disabled-opacity,
+  $form-check-label-disabled-opacity: $form-check-label-disabled-opacity,
+  $form-check-btn-check-disabled-opacity: $form-check-btn-check-disabled-opacity,
+  $form-check-inline-margin-end: $form-check-inline-margin-end,
+
+  // Form switch variables
+  $form-switch-color: $form-switch-color,
+  $form-switch-width: $form-switch-width,
+  $form-switch-padding-start: $form-switch-padding-start,
+  $form-switch-bg-image: $form-switch-bg-image,
+  $form-switch-border-radius: $form-switch-border-radius,
+  $form-switch-transition: $form-switch-transition,
+  $form-switch-focus-color: $form-switch-focus-color,
+  $form-switch-focus-bg-image: $form-switch-focus-bg-image,
+  $form-switch-checked-color: $form-switch-checked-color,
+  $form-switch-checked-bg-image: $form-switch-checked-bg-image,
+  $form-switch-checked-bg-position: $form-switch-checked-bg-position,
+  //Form Select Variables
+  $form-select-padding-y: $form-select-padding-y,
+  $form-select-padding-x: $form-select-padding-x,
+  $form-select-font-family: $form-select-font-family,
+  $form-select-font-size: $form-select-font-size,
+  $form-select-indicator-padding: $form-select-indicator-padding,
+  $form-select-font-weight: $form-select-font-weight,
+  $form-select-line-height: $form-select-line-height,
+  $form-select-color: $form-select-color,
+  $form-select-bg: $form-select-bg,
+  $form-select-disabled-color: $form-select-disabled-color,
+  $form-select-disabled-bg: $form-select-disabled-bg,
+  $form-select-disabled-border-color: $form-select-disabled-border-color,
+  $form-select-bg-position: $form-select-bg-position,
+  $form-select-bg-size: $form-select-bg-size,
+  $form-select-indicator-color: $form-select-indicator-color,
+  $form-select-indicator: $form-select-indicator,
+  $form-select-feedback-icon-padding-end: $form-select-feedback-icon-padding-end,
+  $form-select-feedback-icon-position: $form-select-feedback-icon-position,
+  $form-select-feedback-icon-size: $form-select-feedback-icon-size,
+  $form-select-border-width: $form-select-border-width,
+  $form-select-border-color: $form-select-border-color,
+  $form-select-border-radius: $form-select-border-radius,
+  $form-select-box-shadow: $form-select-box-shadow,
+  $form-select-focus-border-color: $form-select-focus-border-color,
+  $form-select-focus-width: $form-select-focus-width,
+  $form-select-focus-box-shadow: $form-select-focus-box-shadow,
+  $form-select-padding-y-sm: $form-select-padding-y-sm,
+  $form-select-padding-x-sm: $form-select-padding-x-sm,
+  $form-select-font-size-sm: $form-select-font-size-sm,
+  $form-select-border-radius-sm: $form-select-border-radius-sm,
+  $form-select-padding-y-lg: $form-select-padding-y-lg,
+  $form-select-padding-x-lg: $form-select-padding-x-lg,
+  $form-select-font-size-lg: $form-select-font-size-lg,
+  $form-select-border-radius-lg: $form-select-border-radius-lg,
+  $form-select-transition: $form-select-transition,
+  //form
+  //Form Range
+  $form-range-track-width: $form-range-track-width,
+  $form-range-track-height: $form-range-track-height,
+  $form-range-track-cursor: $form-range-track-cursor,
+  $form-range-track-bg: $form-range-track-bg,
+  $form-range-track-border-radius: $form-range-track-border-radius,
+  $form-range-track-box-shadow: $form-range-track-box-shadow,
+
+  $form-range-thumb-width: $form-range-thumb-width,
+  $form-range-thumb-height: $form-range-thumb-height,
+  $form-range-thumb-bg: $form-range-thumb-bg,
+  $form-range-thumb-border: $form-range-thumb-border,
+  $form-range-thumb-border-radius: $form-range-thumb-border-radius,
+  $form-range-thumb-box-shadow: $form-range-thumb-box-shadow,
+  $form-range-thumb-focus-box-shadow: $form-range-thumb-focus-box-shadow,
+  $form-range-thumb-focus-box-shadow-width:
+    $form-range-thumb-focus-box-shadow-width,
+  $form-range-thumb-active-bg: $form-range-thumb-active-bg,
+  $form-range-thumb-disabled-bg: $form-range-thumb-disabled-bg,
+  $form-range-thumb-transition: $form-range-thumb-transition,
+  //Form File
+  $form-file-button-color: $form-file-button-color,
+  $form-file-button-bg: $form-file-button-bg,
+  $form-file-button-hover-bg: $form-file-button-hover-bg,
+  //Form Floating
+  $form-floating-height: $form-floating-height,
+  $form-floating-line-height: $form-floating-line-height,
+  $form-floating-padding-x: $form-floating-padding-x,
+  $form-floating-padding-y: $form-floating-padding-y,
+  $form-floating-input-padding-t: $form-floating-input-padding-t,
+  $form-floating-input-padding-b: $form-floating-input-padding-b,
+  $form-floating-label-height: $form-floating-label-height,
+  $form-floating-label-opacity: $form-floating-label-opacity,
+  $form-floating-label-transform: $form-floating-label-transform,
+  $form-floating-label-disabled-color: $form-floating-label-disabled-color,
+  $form-floating-transition: $form-floating-transition,
+
+  //Form Feedback
+  $form-feedback-margin-top: $form-feedback-margin-top,
+  $form-feedback-font-size: $form-feedback-font-size,
+  $form-feedback-font-style: $form-feedback-font-style,
+  $form-feedback-valid-color: $form-feedback-valid-color,
+  $form-feedback-invalid-color: $form-feedback-invalid-color,
+
+  $form-feedback-icon-valid-color: $form-feedback-icon-valid-color,
+  $form-feedback-icon-valid: $form-feedback-icon-valid,
+  $form-feedback-icon-invalid-color: $form-feedback-icon-invalid-color,
+  $form-feedback-icon-invalid: $form-feedback-icon-invalid,
+
+  // scss-docs-start form-validation-colors
+  $form-valid-color: $form-valid-color,
+  $form-valid-border-color: $form-valid-border-color,
+  $form-invalid-color: $form-invalid-color,
+  $form-invalid-border-color: $form-invalid-border-color,
+  // scss-docs-end form-validation-colors
+  // scss-docs-start form-validation-states
+  $form-validation-states: $form-validation-states,
+  // scss-docs-end form-validation-states
+  // scss-docs-start zindex-stack
+  $zindex-dropdown: $zindex-dropdown,
+  $zindex-sticky: $zindex-sticky,
+  $zindex-fixed: $zindex-fixed,
+  $zindex-offcanvas-backdrop: $zindex-offcanvas-backdrop,
+  $zindex-offcanvas: $zindex-offcanvas,
+  $zindex-modal-backdrop: $zindex-modal-backdrop,
+  $zindex-modal: $zindex-modal,
+  $zindex-popover: $zindex-popover,
+  $zindex-tooltip: $zindex-tooltip,
+  $zindex-toast: $zindex-toast,
+  // scss-docs-end zindex-stack
+  // scss-docs-start zindex-levels-map
+  $zindex-levels: $zindex-levels,
+  // scss-docs-end zindex-levels-map
+  // Navs
+  // scss-docs-start nav-variables
+  $nav-link-padding-y: $nav-link-padding-y,
+  $nav-link-padding-x: $nav-link-padding-x,
+  $nav-link-font-size: $nav-link-font-size,
+  $nav-link-font-weight: $nav-link-font-weight,
+  $nav-link-color: $nav-link-color,
+  $nav-link-hover-color: $nav-link-hover-color,
+  $nav-link-transition: $nav-link-transition,
+  $nav-link-disabled-color: $nav-link-disabled-color,
+  $nav-link-focus-box-shadow: $nav-link-focus-box-shadow,
+
+  $nav-tabs-border-color: $nav-tabs-border-color,
+  $nav-tabs-border-width: $nav-tabs-border-width,
+  $nav-tabs-border-radius: $nav-tabs-border-radius,
+  $nav-tabs-link-hover-border-color: $nav-tabs-link-hover-border-color,
+  $nav-tabs-link-active-color: $nav-tabs-link-active-color,
+  $nav-tabs-link-active-bg: $nav-tabs-link-active-bg,
+  $nav-tabs-link-active-border-color: $nav-tabs-link-active-border-color,
+
+  $nav-pills-border-radius: $nav-pills-border-radius,
+  $nav-pills-link-active-color: $nav-pills-link-active-color,
+  $nav-pills-link-active-bg: $nav-pills-link-active-bg,
+
+  $nav-underline-gap: $nav-underline-gap,
+  $nav-underline-border-width: $nav-underline-border-width,
+  $nav-underline-link-active-color: $nav-underline-link-active-color,
+  // scss-docs-end nav-variables
+  // Navbar
+  // scss-docs-start navbar-variables
+  $navbar-padding-y: $navbar-padding-y,
+  $navbar-padding-x: $navbar-padding-x,
+
+  $navbar-nav-link-padding-x: $navbar-nav-link-padding-x,
+
+  $navbar-brand-font-size: $navbar-brand-font-size,
+  $nav-link-height: $nav-link-height,
+  $navbar-brand-height: $navbar-brand-height,
+  $navbar-brand-padding-y: $navbar-brand-padding-y,
+  $navbar-brand-margin-end: $navbar-brand-margin-end,
+
+  $navbar-toggler-padding-y: $navbar-toggler-padding-y,
+  $navbar-toggler-padding-x: $navbar-toggler-padding-x,
+  $navbar-toggler-font-size: $navbar-toggler-font-size,
+  $navbar-toggler-border-radius: $navbar-toggler-border-radius,
+  $navbar-toggler-focus-width: $navbar-toggler-focus-width,
+  $navbar-toggler-transition: $navbar-toggler-transition,
+
+  $navbar-light-color: $navbar-light-color,
+  $navbar-light-hover-color: $navbar-light-hover-color,
+  $navbar-light-active-color: $navbar-light-active-color,
+  $navbar-light-disabled-color: $navbar-light-disabled-color,
+  $navbar-light-icon-color: $navbar-light-icon-color,
+  $navbar-light-toggler-icon-bg: $navbar-light-toggler-icon-bg,
+  $navbar-light-toggler-border-color: $navbar-light-toggler-border-color,
+  $navbar-light-brand-color: $navbar-light-brand-color,
+  $navbar-light-brand-hover-color: $navbar-light-brand-hover-color,
+  // scss-docs-end navbar-variables
+  // scss-docs-start navbar-dark-variables
+  $navbar-dark-color: $navbar-dark-color,
+  $navbar-dark-hover-color: $navbar-dark-hover-color,
+  $navbar-dark-active-color: $navbar-dark-active-color,
+  $navbar-dark-disabled-color: $navbar-dark-disabled-color,
+  $navbar-dark-toggler-icon-bg: $navbar-dark-toggler-icon-bg,
+  $navbar-dark-toggler-border-color: $navbar-dark-toggler-border-color,
+  $navbar-dark-icon-color: $navbar-dark-icon-color,
+  $navbar-dark-brand-color: $navbar-dark-brand-color,
+  $navbar-dark-brand-hover-color: $navbar-dark-brand-hover-color,
+  // scss-docs-end navbar-dark-variables
+  // Dropdowns
+  //
+  // Dropdown menu container and contents.
+  // scss-docs-start dropdown-variables
+  // scss-docs-end dropdown-variables
+  // scss-docs-start dropdown-dark-variables
+  $dropdown-min-width: $dropdown-min-width,
+  $dropdown-padding-x: $dropdown-padding-x,
+  $dropdown-padding-y: $dropdown-padding-y,
+  $dropdown-spacer: $dropdown-spacer,
+  $dropdown-font-size: $dropdown-font-size,
+  $dropdown-color: $dropdown-color,
+  $dropdown-bg: $dropdown-bg,
+  $dropdown-border-color: $dropdown-border-color,
+  $dropdown-border-radius: $dropdown-border-radius,
+  $dropdown-border-width: $dropdown-border-width,
+  $dropdown-inner-border-radius: $dropdown-inner-border-radius,
+  $dropdown-divider-bg: $dropdown-divider-bg,
+  $dropdown-divider-margin-y: $dropdown-divider-margin-y,
+  $dropdown-box-shadow: $dropdown-box-shadow,
+
+  $dropdown-link-color: $dropdown-link-color,
+  $dropdown-link-hover-color: $dropdown-link-hover-color,
+  $dropdown-link-hover-bg: $dropdown-link-hover-bg,
+  $dropdown-link-active-color: $dropdown-link-active-color,
+  $dropdown-link-active-bg: $dropdown-link-active-bg,
+  $dropdown-link-disabled-color: $dropdown-link-disabled-color,
+
+  $dropdown-item-padding-y: $dropdown-item-padding-y,
+  $dropdown-item-padding-x: $dropdown-item-padding-x,
+
+  $dropdown-header-color: $dropdown-header-color,
+  $dropdown-header-padding-x: $dropdown-header-padding-x,
+  $dropdown-header-padding-y: $dropdown-header-padding-y,
+  $dropdown-header-padding: $dropdown-header-padding,
+
+  // Dropdown dark variables
+  $dropdown-dark-color: $dropdown-dark-color,
+  $dropdown-dark-bg: $dropdown-dark-bg,
+  $dropdown-dark-border-color: $dropdown-dark-border-color,
+  $dropdown-dark-divider-bg: $dropdown-dark-divider-bg,
+  $dropdown-dark-box-shadow: $dropdown-dark-box-shadow,
+  $dropdown-dark-link-color: $dropdown-dark-link-color,
+  $dropdown-dark-link-hover-color: $dropdown-dark-link-hover-color,
+  $dropdown-dark-link-hover-bg: $dropdown-dark-link-hover-bg,
+  $dropdown-dark-link-active-color: $dropdown-dark-link-active-color,
+  $dropdown-dark-link-active-bg: $dropdown-dark-link-active-bg,
+  $dropdown-dark-link-disabled-color: $dropdown-dark-link-disabled-color,
+  $dropdown-dark-header-color: $dropdown-dark-header-color,
+  // scss-docs-end dropdown-dark-variables
+  // Pagination
+  // scss-docs-start pagination-variables
+  $pagination-padding-y: $pagination-padding-y,
+  $pagination-padding-x: $pagination-padding-x,
+  $pagination-padding-y-sm: $pagination-padding-y-sm,
+  $pagination-padding-x-sm: $pagination-padding-x-sm,
+  $pagination-padding-y-lg: $pagination-padding-y-lg,
+  $pagination-padding-x-lg: $pagination-padding-x-lg,
+
+  $pagination-font-size: $pagination-font-size,
+
+  $pagination-color: $pagination-color,
+  $pagination-bg: $pagination-bg,
+  $pagination-border-radius: $pagination-border-radius,
+  $pagination-border-width: $pagination-border-width,
+  $pagination-margin-start: $pagination-margin-start,
+  $pagination-border-color: $pagination-border-color,
+
+  $pagination-focus-color: $pagination-focus-color,
+  $pagination-focus-bg: $pagination-focus-bg,
+  $pagination-focus-box-shadow: $pagination-focus-box-shadow,
+  $pagination-focus-outline: $pagination-focus-outline,
+
+  $pagination-hover-color: $pagination-hover-color,
+  $pagination-hover-bg: $pagination-hover-bg,
+  $pagination-hover-border-color: $pagination-hover-border-color,
+
+  $pagination-active-color: $pagination-active-color,
+  $pagination-active-bg: $pagination-active-bg,
+  $pagination-active-border-color: $pagination-active-border-color,
+
+  $pagination-disabled-color: $pagination-disabled-color,
+  $pagination-disabled-bg: $pagination-disabled-bg,
+  $pagination-disabled-border-color: $pagination-disabled-border-color,
+
+  $pagination-transition: $pagination-transition,
+
+  $pagination-border-radius-sm: $pagination-border-radius-sm,
+  $pagination-border-radius-lg: $pagination-border-radius-lg,
+  // scss-docs-end pagination-variables
+  // scss-docs-start placeholders
+  $placeholder-opacity-max: $placeholder-opacity-max,
+  $placeholder-opacity-min: $placeholder-opacity-min,
+  // scss-docs-end placeholders
+  // Cards
+  // scss-docs-start card-variables
+  $card-spacer-y: $card-spacer-y,
+  $card-spacer-x: $card-spacer-x,
+  $card-title-spacer-y: $card-title-spacer-y,
+  $card-title-color: $card-title-color,
+  $card-subtitle-color: $card-subtitle-color,
+  $card-border-width: $card-border-width,
+  $card-border-color: $card-border-color,
+  $card-border-radius: $card-border-radius,
+  $card-box-shadow: $card-box-shadow,
+  $card-inner-border-radius: $card-inner-border-radius,
+  $card-cap-padding-y: $card-cap-padding-y,
+  $card-cap-padding-x: $card-cap-padding-x,
+  $card-cap-bg: $card-cap-bg,
+  $card-cap-color: $card-cap-color,
+  $card-height: $card-height,
+  $card-color: $card-color,
+  $card-bg: $card-bg,
+  $card-img-overlay-padding: $card-img-overlay-padding,
+  $card-group-margin: $card-group-margin,
+  // scss-docs-end card-variables
+  // Accordion
+  // scss-docs-start accordion-variables
+  $accordion-padding-y: $accordion-padding-y,
+  $accordion-padding-x: $accordion-padding-x,
+  $accordion-color: $accordion-color,
+  $accordion-bg: $accordion-bg,
+  $accordion-border-width: $accordion-border-width,
+  $accordion-border-color: $accordion-border-color,
+  $accordion-border-radius: $accordion-border-radius,
+  $accordion-inner-border-radius: $accordion-inner-border-radius,
+
+  $accordion-body-padding-y: $accordion-body-padding-y,
+  $accordion-body-padding-x: $accordion-body-padding-x,
+
+  $accordion-button-padding-y: $accordion-button-padding-y,
+  $accordion-button-padding-x: $accordion-button-padding-x,
+  $accordion-button-color: $accordion-button-color,
+  $accordion-button-bg: $accordion-button-bg,
+  $accordion-transition: $accordion-transition,
+  $accordion-button-active-bg: $accordion-button-active-bg,
+  $accordion-button-active-color: $accordion-button-active-color,
+
+  $accordion-button-focus-border-color: $accordion-button-focus-border-color,
+  $accordion-button-focus-box-shadow: $accordion-button-focus-box-shadow,
+
+  $accordion-icon-width: $accordion-icon-width,
+  $accordion-icon-color: $accordion-icon-color,
+  $accordion-icon-active-color: $accordion-icon-active-color,
+  $accordion-icon-transition: $accordion-icon-transition,
+  $accordion-icon-transform: $accordion-icon-transform,
+
+  $accordion-button-icon: $accordion-button-icon,
+  $accordion-button-active-icon: $accordion-button-active-icon,
+  // scss-docs-end accordion-variables
+  // Tooltips
+  // scss-docs-start tooltip-variables
+  $tooltip-font-size: $tooltip-font-size,
+  $tooltip-max-width: $tooltip-max-width,
+  $tooltip-color: $tooltip-color,
+  $tooltip-bg: $tooltip-bg,
+  $tooltip-border-radius: $tooltip-border-radius,
+  $tooltip-opacity: $tooltip-opacity,
+  $tooltip-padding-y: $tooltip-padding-y,
+  $tooltip-padding-x: $tooltip-padding-x,
+  $tooltip-margin: $tooltip-margin,
+  $tooltip-arrow-width: $tooltip-arrow-width,
+  $tooltip-arrow-height: $tooltip-arrow-height,
+  $tooltip-arrow-color: $tooltip-arrow-color,
+  // scss-docs-end tooltip-variables
+  // scss-docs-start tooltip-feedback-variables
+  $form-feedback-tooltip-padding-y: $form-feedback-tooltip-padding-y,
+  $form-feedback-tooltip-padding-x: $form-feedback-tooltip-padding-x,
+  $form-feedback-tooltip-font-size: $form-feedback-tooltip-font-size,
+  $form-feedback-tooltip-line-height: $form-feedback-tooltip-line-height,
+  $form-feedback-tooltip-opacity: $form-feedback-tooltip-opacity,
+  $form-feedback-tooltip-border-radius: $form-feedback-tooltip-border-radius,
+  // scss-docs-end tooltip-feedback-variables
+  // Popovers
+  // scss-docs-start popover-variables
+  $popover-font-size: $popover-font-size,
+  $popover-bg: $popover-bg,
+  $popover-max-width: $popover-max-width,
+  $popover-border-width: $popover-border-width,
+  $popover-border-color: $popover-border-color,
+  $popover-border-radius: $popover-border-radius,
+  $popover-inner-border-radius: $popover-inner-border-radius,
+  $popover-box-shadow: $popover-box-shadow,
+
+  $popover-header-font-size: $popover-header-font-size,
+  $popover-header-bg: $popover-header-bg,
+  $popover-header-color: $popover-header-color,
+  $popover-header-padding-y: $popover-header-padding-y,
+  $popover-header-padding-x: $popover-header-padding-x,
+
+  $popover-body-color: $popover-body-color,
+  $popover-body-padding-y: $popover-body-padding-y,
+  $popover-body-padding-x: $popover-body-padding-x,
+
+  $popover-arrow-width: $popover-arrow-width,
+  $popover-arrow-height: $popover-arrow-height,
+
+  // Deprecated (for compatibility)
+  $popover-arrow-color: $popover-arrow-color,
+  $popover-arrow-outer-color: $popover-arrow-outer-color,
+  // scss-docs-end popover-variables
+  // Toasts
+  // scss-docs-start toast-variables
+  $toast-max-width: $toast-max-width,
+  $toast-padding-x: $toast-padding-x,
+  $toast-padding-y: $toast-padding-y,
+  $toast-font-size: $toast-font-size,
+  $toast-color: $toast-color,
+  $toast-background-color: $toast-background-color,
+  $toast-border-width: $toast-border-width,
+  $toast-border-color: $toast-border-color,
+  $toast-border-radius: $toast-border-radius,
+  $toast-box-shadow: $toast-box-shadow,
+  $toast-spacing: $toast-spacing,
+
+  $toast-header-color: $toast-header-color,
+  $toast-header-background-color: $toast-header-background-color,
+  $toast-header-border-color: $toast-header-border-color,
+  // scss-docs-end toast-variables
+  // Badges
+  // scss-docs-start badge-variables
+  $badge-font-size: $badge-font-size,
+  $badge-font-weight: $badge-font-weight,
+  $badge-color: $badge-color,
+  $badge-padding-y: $badge-padding-y,
+  $badge-padding-x: $badge-padding-x,
+  $badge-border-radius: $badge-border-radius,
+  // scss-docs-end badge-variables
+  // Modals
+  // scss-docs-start modal-variables
+  $modal-inner-padding: $modal-inner-padding,
+  $modal-footer-margin-between: $modal-footer-margin-between,
+  $modal-dialog-margin: $modal-dialog-margin,
+  $modal-dialog-margin-y-sm-up: $modal-dialog-margin-y-sm-up,
+  $modal-title-line-height: $modal-title-line-height,
+  $modal-content-color: $modal-content-color,
+  $modal-content-bg: $modal-content-bg,
+  $modal-content-border-color: $modal-content-border-color,
+  $modal-content-border-width: $modal-content-border-width,
+  $modal-content-border-radius: $modal-content-border-radius,
+  $modal-content-inner-border-radius: $modal-content-inner-border-radius,
+  $modal-content-box-shadow-xs: $modal-content-box-shadow-xs,
+  $modal-content-box-shadow-sm-up: $modal-content-box-shadow-sm-up,
+  $modal-backdrop-bg: $modal-backdrop-bg,
+  $modal-backdrop-opacity: $modal-backdrop-opacity,
+  $modal-header-border-color: $modal-header-border-color,
+  $modal-header-border-width: $modal-header-border-width,
+  $modal-header-padding-y: $modal-header-padding-y,
+  $modal-header-padding-x: $modal-header-padding-x,
+  $modal-header-padding: $modal-header-padding,
+  $modal-footer-bg: $modal-footer-bg,
+  $modal-footer-border-color: $modal-footer-border-color,
+  $modal-footer-border-width: $modal-footer-border-width,
+  $modal-sm: $modal-sm,
+  $modal-md: $modal-md,
+  $modal-lg: $modal-lg,
+  $modal-xl: $modal-xl,
+  $modal-fade-transform: $modal-fade-transform,
+  $modal-show-transform: $modal-show-transform,
+  $modal-transition: $modal-transition,
+  $modal-scale-transform: $modal-scale-transform,
+  // scss-docs-end modal-variables
+  // Alerts
+  //
+  // Define alert colors, border radius, and padding.
+  // scss-docs-start alert-variables
+  $alert-padding-y: $alert-padding-y,
+  $alert-padding-x: $alert-padding-x,
+  $alert-margin-bottom: $alert-margin-bottom,
+  $alert-border-radius: $alert-border-radius,
+  $alert-link-font-weight: $alert-link-font-weight,
+  $alert-border-width: $alert-border-width,
+  $alert-dismissible-padding-r: $alert-dismissible-padding-r,
+  $alert-bg-scale: $alert-bg-scale,
+  $alert-border-scale: $alert-border-scale,
+  $alert-color-scale: $alert-color-scale,
+  // scss-docs-end alert-variables
+  // Progress bars
+  // scss-docs-start progress-variables
+  $progress-height: $progress-height,
+  $progress-font-size: $progress-font-size,
+  $progress-bg: $progress-bg,
+  $progress-border-radius: $progress-border-radius,
+  $progress-box-shadow: $progress-box-shadow,
+  $progress-bar-color: $progress-bar-color,
+  $progress-bar-bg: $progress-bar-bg,
+  $progress-bar-animation-timing: $progress-bar-animation-timing,
+  $progress-bar-transition: $progress-bar-transition,
+  // scss-docs-end progress-variables
+  // List group
+  // scss-docs-start list-group-variables
+  $list-group-color: $list-group-color,
+  $list-group-bg: $list-group-bg,
+  $list-group-border-color: $list-group-border-color,
+  $list-group-border-width: $list-group-border-width,
+  $list-group-border-radius: $list-group-border-radius,
+  $list-group-item-padding-y: $list-group-item-padding-y,
+  $list-group-item-padding-x: $list-group-item-padding-x,
+  $list-group-hover-bg: $list-group-hover-bg,
+  $list-group-active-color: $list-group-active-color,
+  $list-group-active-bg: $list-group-active-bg,
+  $list-group-active-border-color: $list-group-active-border-color,
+  $list-group-disabled-color: $list-group-disabled-color,
+  $list-group-disabled-bg: $list-group-disabled-bg,
+  $list-group-action-color: $list-group-action-color,
+  $list-group-action-hover-color: $list-group-action-hover-color,
+  $list-group-action-active-color: $list-group-action-active-color,
+  $list-group-action-active-bg: $list-group-action-active-bg,
+  // scss-docs-end list-group-variables
+  // Image thumbnails
+  // scss-docs-start thumbnail-variables
+  $thumbnail-padding: $thumbnail-padding,
+  $thumbnail-bg: $thumbnail-bg,
+  $thumbnail-border-width: $thumbnail-border-width,
+  $thumbnail-border-color: $thumbnail-border-color,
+  $thumbnail-border-radius: $thumbnail-border-radius,
+  $thumbnail-box-shadow: $thumbnail-box-shadow,
+  // scss-docs-end thumbnail-variables
+  // Figures
+  // scss-docs-start figure-variables
+  $figure-caption-font-size: $figure-caption-font-size,
+  $figure-caption-color: $figure-caption-color,
+  // scss-docs-end figure-variables
+  // Breadcrumbs
+  // scss-docs-start breadcrumb-variables
+  $breadcrumb-font-size: $breadcrumb-font-size,
+  $breadcrumb-padding-y: $breadcrumb-padding-y,
+  $breadcrumb-padding-x: $breadcrumb-padding-x,
+  $breadcrumb-item-padding-x: $breadcrumb-item-padding-x,
+  $breadcrumb-margin-bottom: $breadcrumb-margin-bottom,
+  $breadcrumb-bg: $breadcrumb-bg,
+  $breadcrumb-divider-color: $breadcrumb-divider-color,
+  $breadcrumb-active-color: $breadcrumb-active-color,
+  $breadcrumb-divider: $breadcrumb-divider,
+  $breadcrumb-divider-flipped: $breadcrumb-divider-flipped,
+  $breadcrumb-border-radius: $breadcrumb-border-radius,
+  // scss-docs-end breadcrumb-variables
+  // Carousel
+  // scss-docs-start carousel-variables
+  $carousel-control-color: $carousel-control-color,
+  $carousel-control-width: $carousel-control-width,
+  $carousel-control-opacity: $carousel-control-opacity,
+  $carousel-control-hover-opacity: $carousel-control-hover-opacity,
+  $carousel-control-transition: $carousel-control-transition,
+
+  $carousel-indicator-width: $carousel-indicator-width,
+  $carousel-indicator-height: $carousel-indicator-height,
+  $carousel-indicator-hit-area-height: $carousel-indicator-hit-area-height,
+  $carousel-indicator-spacer: $carousel-indicator-spacer,
+  $carousel-indicator-opacity: $carousel-indicator-opacity,
+  $carousel-indicator-active-bg: $carousel-indicator-active-bg,
+  $carousel-indicator-active-opacity: $carousel-indicator-active-opacity,
+  $carousel-indicator-transition: $carousel-indicator-transition,
+
+  $carousel-caption-width: $carousel-caption-width,
+  $carousel-caption-color: $carousel-caption-color,
+  $carousel-caption-padding-y: $carousel-caption-padding-y,
+  $carousel-caption-spacer: $carousel-caption-spacer,
+
+  $carousel-control-icon-width: $carousel-control-icon-width,
+  $carousel-control-prev-icon-bg: $carousel-control-prev-icon-bg,
+  $carousel-control-next-icon-bg: $carousel-control-next-icon-bg,
+
+  $carousel-transition-duration: $carousel-transition-duration,
+  $carousel-transition: $carousel-transition,
+  //carousel dark
+  $carousel-dark-indicator-active-bg: $carousel-dark-indicator-active-bg,
+  $carousel-dark-caption-color: $carousel-dark-caption-color,
+  $carousel-dark-control-icon-filter: $carousel-dark-control-icon-filter,
+  // scss-docs-end carousel-variables
+  // Spinners
+  // scss-docs-start spinner-variables
+  $spinner-width: $spinner-width,
+  $spinner-height: $spinner-height,
+  $spinner-vertical-align: $spinner-vertical-align,
+  $spinner-border-width: $spinner-border-width,
+  $spinner-animation-speed: $spinner-animation-speed,
+  $spinner-width-sm: $spinner-width-sm,
+  $spinner-height-sm: $spinner-height-sm,
+  $spinner-border-width-sm: $spinner-border-width-sm,
+  // scss-docs-end spinner-variables
+  // Close
+  // scss-docs-start close-variables
+  $btn-close-width: $btn-close-width,
+  $btn-close-height: $btn-close-height,
+  $btn-close-padding-x: $btn-close-padding-x,
+  $btn-close-padding-y: $btn-close-padding-y,
+  $btn-close-color: $btn-close-color,
+  $btn-close-bg: $btn-close-bg,
+  $btn-close-focus-shadow: $btn-close-focus-shadow,
+  $btn-close-opacity: $btn-close-opacity,
+  $btn-close-hover-opacity: $btn-close-hover-opacity,
+  $btn-close-focus-opacity: $btn-close-focus-opacity,
+  $btn-close-disabled-opacity: $btn-close-disabled-opacity,
+  $btn-close-white-filter: $btn-close-white-filter,
+  // scss-docs-end close-variables
+  // Offcanvas
+  // scss-docs-start offcanvas-variables
+  $offcanvas-padding-y: $offcanvas-padding-y,
+  $offcanvas-padding-x: $offcanvas-padding-x,
+  $offcanvas-horizontal-width: $offcanvas-horizontal-width,
+  $offcanvas-vertical-height: $offcanvas-vertical-height,
+  $offcanvas-transition-duration: $offcanvas-transition-duration,
+  $offcanvas-border-color: $offcanvas-border-color,
+  $offcanvas-border-width: $offcanvas-border-width,
+  $offcanvas-title-line-height: $offcanvas-title-line-height,
+  $offcanvas-bg-color: $offcanvas-bg-color,
+  $offcanvas-color: $offcanvas-color,
+  $offcanvas-box-shadow: $offcanvas-box-shadow,
+  $offcanvas-backdrop-bg: $offcanvas-backdrop-bg,
+  $offcanvas-backdrop-opacity: $offcanvas-backdrop-opacity,
+  // scss-docs-end offcanvas-variables
+  //Code
+  $code-font-size: $code-font-size,
+  $code-color: $code-color,
+  $kbd-padding-y: $kbd-padding-y,
+  $kbd-padding-x: $kbd-padding-x,
+  $kbd-font-size: $kbd-font-size,
+  $kbd-color: $kbd-color,
+  $kbd-bg: $kbd-bg,
+  // Characters which are escaped by the escape-svg function
+  $escaped-characters: $escaped-characters,
+  // Quickly modify global styling by enabling or disabling optional features.
+  $enable-caret: false,
+  $enable-rounded: true,
+  $enable-shadows: false,
+  $enable-gradients: true,
+  $enable-transitions: true,
+  $enable-reduced-motion: true,
+  $enable-smooth-scroll: true,
+  $enable-grid-classes: true,
+  $enable-container-classes: true,
+  $enable-cssgrid: false,
+  $enable-button-pointers: true,
+  $enable-rfs: true,
+  $enable-validation-icons: true,
+  $enable-negative-margins: true,
+  $enable-deprecation-messages: true,
+  $enable-important-utilities: true,
+  $enable-dark-mode: true,
+  $color-mode-type: data,
+  // `data` or `media-query`
+  $gradient: $gradient,
+  // scss-docs-start spacer-variables-maps
+  // scss-docs-start spacer-variables-maps
+  $spacer: $spacer,
+  $spacers: $spacers,
+  // $negative-spacers: $negative-spacers, affecting css
+  // scss-docs-end spacer-variables-maps
+  // scss-docs-start position-map
+  $position-values: $position-values // scss-docs-end position-map,
+);
+
+.form-control.is-invalid {
+  background-position: right calc(0.375em + 0.25rem) center;
+  background-size: calc(0.75em + 0.5rem) calc(0.75em + 0.5rem);
+}

@@ -1,0 +1,23 @@
+<!-- start page title -->
+<div class="row">
+  <div class="col-12">
+    <div
+      class="page-title-box d-sm-flex align-items-center justify-content-between"
+    >
+      <h4 class="mb-sm-0">{{ title() }}</h4>
+
+      <div class="page-title-right">
+        <ol class="breadcrumb m-0">
+          @for(item of breadcrumbs();track $index){
+          <div>
+            <li class="breadcrumb-item" [class.active]="item.active">
+              {{ item.label }}
+            </li>
+          </div>
+          }
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end page title -->

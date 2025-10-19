@@ -1,0 +1,55 @@
+{
+  "name": "angular-admin-v1",
+  "version": "0.0.0",
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve",
+    "build": "ng build",
+    "watch": "ng build --watch --configuration development",
+    "test": "vitest",
+    "test:ui": "vitest --ui",
+    "lint:scss": "stylelint \"src/**/*.scss\""
+  },
+  "prettier": {
+    "overrides": [
+      {
+        "files": "*.html",
+        "options": {
+          "parser": "angular"
+        }
+      }
+    ]
+  },
+  "private": true,
+  "dependencies": {
+    "@angular/common": "^20.0.0",
+    "@angular/compiler": "^20.0.0",
+    "@angular/core": "^20.0.0",
+    "@angular/forms": "^20.0.0",
+    "@angular/platform-browser": "^20.0.0",
+    "@angular/router": "^20.0.0",
+    "@ng-bootstrap/ng-bootstrap": "19.0.1",
+    "@ng-select/ng-select": "^15.1.3",
+    "bootstrap": "^5.3.7",
+    "leaflet": "^1.9.4",
+    "ngx-lightbox": "^3.0.0",
+    "rxjs": "~7.8.0",
+    "simplebar": "^6.3.2",
+    "simplebar-angular": "^3.3.2",
+    "tslib": "^2.3.0",
+    "zone.js": "~0.15.0"
+  },
+  "devDependencies": {
+    "@angular/build": "^20.0.6",
+    "@angular/cli": "^20.0.6",
+    "@angular/compiler-cli": "^20.0.0",
+    "@testing-library/angular": "^14.1.1",
+    "@types/node": "^20.11.30",
+    "jsdom": "^24.0.0",
+    "stylelint": "^16.22.0",
+    "stylelint-config-standard-scss": "^15.0.1",
+    "stylelint-scss": "^6.12.1",
+    "typescript": "~5.8.2",
+    "vitest": "^3.2.4"
+  }
+}

@@ -1,0 +1,31 @@
+//
+// _form-control.scss
+//
+@use "config/material/index" as vars;
+
+.form-icon {
+  position: relative;
+  .form-control-icon {
+    padding-left: calc(#{vars.$input-padding-x} * 3);
+    position: relative;
+  }
+  i {
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    left: 18px;
+    display: flex;
+    align-items: center;
+  }
+  &.right {
+    .form-control-icon {
+      padding-right: calc(#{vars.$input-padding-x} * 3);
+      padding-left: vars.$input-padding-x;
+      position: relative;
+    }
+    i {
+      left: auto;
+      right: 18px;
+    }
+  }
+}

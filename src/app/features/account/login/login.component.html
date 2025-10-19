@@ -1,0 +1,137 @@
+<div class="auth-page-wrapper pt-5">
+  <!-- auth page bg -->
+
+  <!-- auth page content -->
+  <div class="auth-page-content">
+    <div class="container">
+      <!-- end row -->
+
+      <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6 col-xl-5">
+          <div class="card mt-4 border-0 bg-white">
+            <div class="card-body p-4">
+              <div class="text-center mt-2">
+                <img
+                  src="assets/images/logo/logo-dark.png"
+                  class="mb-3"
+                  alt=""
+                  height="50"
+                />
+                <h5 class="text-danger">Welcome Back !</h5>
+                <p class="text-muted">Sign in to continue to Nextwebi.</p>
+              </div>
+              <div class="p-2 mt-4">
+                <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                  <div class="mb-3">
+                    <label class="form-label" for="loginId">Email</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      [class.is-invalid]="
+                        f['loginId'].touched && f['loginId'].invalid
+                      "
+                      id="loginId"
+                      placeholder="Enter email"
+                      formControlName="loginId"
+                    />
+                    @if (f['loginId'].touched && f['loginId'].errors) {
+                    <div class="invalid-feedback">
+                      @if (f['loginId'].errors['required']) { Email is required
+                      } @if (f['loginId'].errors['email']) { Invalid email
+                      format }
+                    </div>
+                    }
+                  </div>
+
+                  <div class="mb-3">
+                    <label class="form-label" for="password">Password</label>
+                    <div class="position-relative auth-pass-inputgroup">
+                      <input
+                        [type]="fieldTextType() ? 'text' : 'password'"
+                        class="form-control pe-5"
+                        [class.is-invalid]="
+                          f['password'].touched && f['password'].invalid
+                        "
+                        id="password"
+                        placeholder="Enter password"
+                        formControlName="password"
+                      />
+                      <button
+                        class="btn btn-link position-absolute end-0 top-0 text-decoration-none text-muted shadow-none"
+                        type="button"
+                        (click)="toggleFieldTextType()"
+                      >
+                        <i
+                          class="mdi align-middle"
+                          [ngClass]="{
+                            'mdi-eye-off-outline': !fieldTextType(),
+                            'mdi-eye-outline': fieldTextType()
+                          }"
+                        ></i>
+                      </button>
+                      @if (f['password'].touched && f['password'].errors) {
+                      <div class="invalid-feedback">
+                        @if (f['password'].errors['required']) { Password is
+                        required }
+                      </div>
+                      }
+                    </div>
+                  </div>
+
+                  <div class="form-check form-check-danger">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      id="rememberMe"
+                      formControlName="isLogged"
+                    />
+                    <label
+                      class="form-check-label form-check-danger"
+                      for="rememberMe"
+                      >Remember me</label
+                    >
+                  </div>
+
+                  <div class="mt-4">
+                    <button class="btn btn-danger btn-load w-100" type="submit">
+                      @if(loading()){
+                      <span
+                        class="d-flex align-items-center justify-content-center gap-2"
+                      >
+                        <span
+                          class="spinner-border flex-shrink-0"
+                          role="status"
+                        >
+                          <span class="visually-hidden">Signing in...</span>
+                        </span>
+                        Signing in...
+                      </span>
+                      }@else {Sign in}
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+
+            <!-- end card body -->
+          </div>
+          <div class="mt-4 text-center">
+            <p class="mb-0">
+              ©
+              <script>
+                document.write(new Date().getFullYear());
+              </script>
+              2025 nextwebi.com
+            </p>
+          </div>
+          <!-- end card -->
+        </div>
+      </div>
+      <!-- end row -->
+    </div>
+    <!-- end container -->
+  </div>
+  <!-- end auth page content -->
+</div>
+<!-- end auth-page-wrapper -->
+<!-- <app-toasts aria-live="polite" aria-atomic="true"></app-toasts> -->

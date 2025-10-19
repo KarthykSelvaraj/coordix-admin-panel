@@ -1,0 +1,8 @@
+{
+  "extends": "stylelint-config-standard-scss",
+  "rules": {
+    "color-no-invalid-hex": true,
+    "declaration-no-important": true,
+    "scss/dollar-variable-pattern": "^[_]?[a-z]+([a-z0-9-]+)*$"
+  }
+}

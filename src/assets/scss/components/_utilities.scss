@@ -1,0 +1,22 @@
+//
+// _utilities.scss
+//
+
+@use "config/material/index" as vars;
+
+$utilities: (
+  "font-size-custom": (
+    property: font-size,
+    class: fs,
+    values: vars.$font-size-custom,
+  ),
+
+  // Add new utilities
+  "cursor":
+    (
+      property: cursor,
+      class: cursor,
+      responsive: true,
+      values: auto pointer grab,
+    ),
+);
