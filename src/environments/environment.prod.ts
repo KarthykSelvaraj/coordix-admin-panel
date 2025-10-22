@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://api.Nextwebi.in/api/v1',
+  apiUrl: 'https://api.coordix.in/api/v1',
 };
